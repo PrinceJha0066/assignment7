@@ -1,24 +1,19 @@
-def update_file(file="data.txt"):
+def file_operation(roll_no, name,stud_class, file="data.txt"):
     try:
-        # Open the file in append mode
-        f = open(file, "a")
-        
-        # Write data to the file
-        roll_number = "12345"
-        name = "princejha"
-        class_name = "SYCO"
-        f.writelines([roll_number + "\n", name + "\n", class_name + "\n"])
-                
-        # Reopen the file in read mode
-        f = open(file, "r")
-        
-        # Read and print the data from the file
-        print(f.readlines())
+        f=open(file, "w")
+        pass
+        f=open(file,"a")
+        line=[f"{roll_no}, {name}, {stud_class}"]
+        f.writelines(line)
+        f=open(file,"r")
+        data=f.readlines()
+        print("Data is: ")
 
-    except FileNotFoundError as e:
-        print(f"Error: {e}")
-    except IOError as e:
-        print(f"Error: {e}")
+        print(data)
 
-# Call the function
-update_file()
+    except FileNotFoundError:
+        print(f"{file} was not found....enter correct file name")
+
+    except Exception:
+        print("Something went wrong")
+file_operation(38, "prince", "3rd Year")
